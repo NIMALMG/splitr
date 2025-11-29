@@ -18,7 +18,7 @@ export default defineSchema({
         category : v.optional(v.string()),
         date : v.number(),
         paidByUserId : v.id("users"),
-        SplitType: v.string(),
+        splitType: v.string(),
         splits: v.array(
             v.object({
                 userId : v.id("users"),
@@ -53,12 +53,12 @@ export default defineSchema({
         date: v.number(),
         paidByUserId: v.id("users"),
         receivedByUserId: v.id("users"),
-        geroupId: v.optional(v.id("groups")),
+        groupId: v.optional(v.id("groups")),
         relatedExpenseIds: v.optional(v.array(v.id("expenses"))),
         createdBy: v.id("users"),
     })
-        .index("by_group",["geroupId"])
-        .index("by_user_and_group", ["paidByUserId", "geroupId"])
-        .index("by_receiver_and_group", ["receivedByUserId", "geroupId"])
+        .index("by_group",["groupId"])
+        .index("by_user_and_group", ["paidByUserId", "groupId"])
+        .index("by_receiver_and_group", ["receivedByUserId", "groupId"])
         .index("by_date", ["date"]),
 });
